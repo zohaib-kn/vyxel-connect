@@ -21,17 +21,17 @@ export const Features: React.FC = () => {
 
   const getFeatureIcon = (name: string) => {
     switch (name) {
-      case 'Inbox': return <Inbox className="w-5 h-5 text-brand-600" />;
-      case 'Users': return <Users className="w-5 h-5 text-emerald-600" />;
+      case 'Inbox': return <Inbox className="w-5 h-5 text-[#007FFB]" />;
+      case 'Users': return <Users className="w-5 h-5 text-[#007FFB]" />;
       case 'FileCheck2': return <FileCheck2 className="w-5 h-5 text-purple-600" />;
-      case 'Send': return <Send className="w-5 h-5 text-emerald-600" />;
-      case 'Bot': return <Bot className="w-5 h-5 text-brand-600" />;
+      case 'Send': return <Send className="w-5 h-5 text-[#007FFB]" />;
+      case 'Bot': return <Bot className="w-5 h-5 text-[#007FFB]" />;
       case 'ShoppingBag': return <ShoppingBag className="w-5 h-5 text-amber-600" />;
       case 'BarChart3': return <BarChart3 className="w-5 h-5 text-rose-600" />;
-      case 'Radio': return <Radio className="w-5 h-5 text-cyan-600" />;
+      case 'Radio': return <Radio className="w-5 h-5 text-[#01E7DB]" />;
       case 'Terminal': return <Terminal className="w-5 h-5 text-indigo-600" />;
-      case 'ShieldCheck': return <ShieldCheck className="w-5 h-5 text-emerald-600" />;
-      default: return <Inbox className="w-5 h-5 text-brand-600" />;
+      case 'ShieldCheck': return <ShieldCheck className="w-5 h-5 text-[#007FFB]" />;
+      default: return <Inbox className="w-5 h-5 text-[#007FFB]" />;
     }
   };
 
@@ -117,7 +117,7 @@ export const Features: React.FC = () => {
                   <ul className="space-y-2.5">
                     {feat.bullets.map((bullet, bIdx) => (
                       <li key={bIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-[#007FFB] shrink-0 mt-0.5" />
                         <span>{bullet}</span>
                       </li>
                     ))}
@@ -151,7 +151,7 @@ export const Features: React.FC = () => {
                     />
                   ) : (
                     <div className="p-8 rounded-2xl bg-slate-900 text-slate-300 border border-slate-800">
-                      <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 mb-3">
+                      <div className="flex items-center gap-2 text-xs font-mono text-[#01E7DB] mb-3">
                         <CheckCircle2 className="w-4 h-4" />
                         <span>Production Ready Implementation</span>
                       </div>

@@ -26,11 +26,15 @@
   }
 
   .radial-glow-blue {
-    background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12), transparent 70%);
+    background: radial-gradient(circle at 50% 0%, rgba(0, 127, 251, 0.16), transparent 70%);
+  }
+
+  .radial-glow-cyan {
+    background: radial-gradient(circle at 50% 0%, rgba(1, 231, 219, 0.18), transparent 70%);
   }
 
   .radial-glow-green {
-    background: radial-gradient(circle at 50% 0%, rgba(37, 211, 102, 0.12), transparent 70%);
+    background: radial-gradient(circle at 50% 0%, rgba(1, 231, 219, 0.16), transparent 70%);
   }
 
   .pattern-grid {

@@ -53,10 +53,10 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-3 text-slate-700">
-                  <MessageSquare className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <MessageSquare className="w-4 h-4 text-[#007FFB] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-semibold block text-slate-900">API &amp; Developer Inquiries</span>
-                    <a href="mailto:api@vyxel.digi-wire.com" className="text-emerald-700 hover:underline">
+                    <a href="mailto:api@vyxel.digi-wire.com" className="text-[#007FFB] hover:underline">
                       api@vyxel.digi-wire.com
                     </a>
                   </div>
@@ -72,8 +72,8 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-200 text-xs text-slate-700 leading-relaxed">
-              <div className="flex items-center gap-2 text-emerald-800 font-bold mb-2">
+            <div className="p-6 rounded-2xl bg-blue-50/50 border border-blue-200 text-xs text-slate-700 leading-relaxed">
+              <div className="flex items-center gap-2 text-[#007FFB] font-bold mb-2">
                 <ShieldCheck className="w-4 h-4" />
                 <span>Self-Serve Signup Available</span>
               </div>
@@ -86,7 +86,7 @@ export const Contact: React.FC = () => {
             <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/80 shadow-soft-sm">
               {submitted ? (
                 <div className="text-center py-12">
-                  <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-4 font-bold">
+                  <div className="w-14 h-14 rounded-2xl bg-[#01E7DB]/15 text-[#007FFB] flex items-center justify-center mx-auto mb-4 font-bold">
                     <CheckCircle2 className="w-7 h-7" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900">Thank you for reaching out!</h3>
@@ -185,7 +185,7 @@ export const Contact: React.FC = () => {
                   <div className="pt-2">
                     <Button
                       type="submit"
-                      variant="whatsapp"
+                      variant="primary"
                       className="w-full"
                       iconRight={<Send className="w-4 h-4" />}
                     >

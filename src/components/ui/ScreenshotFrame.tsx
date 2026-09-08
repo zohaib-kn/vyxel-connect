@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   MessageSquare, Sparkles, CheckCheck, Clock, ShieldCheck, 
   Send, Bot, Users, Tag, ChevronDown, 
-  Layers, ExternalLink
+  Layers, ExternalLink, Lock, RotateCw, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Badge } from './Badge';
@@ -15,6 +15,9 @@ export interface ScreenshotFrameProps {
   imageAlt?: string;
   className?: string;
   children?: React.ReactNode;
+  browserChrome?: boolean;
+  url?: string;
+  theme?: 'light' | 'dark';
 }
 
 export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
@@ -25,33 +28,82 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
   imageAlt = "Vyxel Connect Dashboard Preview",
   className,
   children,
+  browserChrome = true,
+  url = "https://provider.digi-wire.com/inbox",
+  theme = 'dark',
 }) => {
+  const isLight = theme === 'light';
+
   return (
-    <div className={cn("relative rounded-2xl sm:rounded-3xl border border-slate-700/70 bg-[#0B1120] text-slate-100 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.4)] overflow-hidden", className)}>
-      {/* Top Window Bar */}
-      <div className="flex items-center justify-between px-4 py-3 bg-[#070b14] border-b border-slate-800/80">
-        <div className="flex items-center gap-2 sm:gap-3">
+    <div className={cn(
+      "relative rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-300",
+      isLight 
+        ? "border border-slate-200/90 bg-white text-slate-800 shadow-[0_20px_60px_-15px_rgba(15,23,42,0.12)]"
+        : "border border-slate-700/70 bg-[#0B1120] text-slate-100 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.4)]",
+      className
+    )}>
+      {/* Top Browser Chrome Bar */}
+      <div className={cn(
+        "flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b transition-colors",
+        isLight
+          ? "bg-slate-50/95 border-slate-200"
+          : "bg-[#070b14] border-slate-800/80"
+      )}>
+        {/* Left: Traffic Lights & Navigation controls */}
+        <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-            <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-            <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+            <span className="w-3 h-3 rounded-full bg-red-400/90 inline-block"></span>
+            <span className="w-3 h-3 rounded-full bg-amber-400/90 inline-block"></span>
+            <span className="w-3 h-3 rounded-full bg-emerald-400/90 inline-block"></span>
           </div>
-          <div className="h-4 w-px bg-slate-800 hidden sm:block"></div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-slate-300 font-display">{title}</span>
-            <span className="hidden md:inline-block text-[11px] text-slate-500">•</span>
-            <span className="hidden md:inline-block text-[11px] text-slate-400">{subtitle}</span>
+
+          <div className="hidden sm:flex items-center gap-1 pl-1 text-slate-400">
+            <ChevronLeft className="w-3.5 h-3.5 opacity-60" />
+            <ChevronRight className="w-3.5 h-3.5 opacity-30" />
+            <RotateCw className="w-3 h-3 opacity-60 ml-0.5" />
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-semibold text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        {/* Center: Realistic Browser Address Bar */}
+        {browserChrome ? (
+          <div className="order-3 sm:order-2 w-full sm:w-auto flex-1 sm:max-w-md mx-auto">
+            <div className={cn(
+              "flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all shadow-inner",
+              isLight
+                ? "bg-white border-slate-200 text-slate-600"
+                : "bg-[#03060c] border-slate-800/90 text-slate-300"
+            )}>
+              <Lock className="w-3 h-3 text-[#01E7DB] shrink-0" />
+              <span className="truncate select-all">{url}</span>
+            </div>
+          </div>
+        ) : (
+          <div className="hidden md:flex items-center gap-2">
+            <span className="text-xs font-semibold font-display">{title}</span>
+            <span className="text-[11px] text-slate-500">•</span>
+            <span className="text-[11px] text-slate-400">{subtitle}</span>
+          </div>
+        )}
+
+        {/* Right: Live Status Badge & Tenant */}
+        <div className="order-2 sm:order-3 flex items-center gap-2 shrink-0">
+          <div className={cn(
+            "flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold",
+            isLight
+              ? "bg-cyan-50 border border-cyan-200 text-[#007FFB]"
+              : "bg-[#01E7DB]/10 border border-[#01E7DB]/20 text-[#01E7DB]"
+          )}>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#01E7DB] animate-pulse"></span>
             <span className="hidden sm:inline">SSE:</span> Live
           </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 text-[11px] text-slate-300">
-            <ShieldCheck className="w-3 h-3 text-brand-400" />
-            <span className="hidden sm:inline">Tenant:</span> Acme Corp
+          <div className={cn(
+            "hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px]",
+            isLight
+              ? "bg-slate-100 text-slate-600"
+              : "bg-slate-800 text-slate-300"
+          )}>
+            <ShieldCheck className="w-3 h-3 text-[#007FFB]" />
+            <span>Acme Corp</span>
           </div>
         </div>
       </div>
@@ -78,7 +130,7 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
               {/* Channel filter tabs */}
               <div className="flex gap-1 mb-3">
                 <button className="px-2 py-1 rounded-md bg-slate-800 text-white font-semibold text-[10px]">All</button>
-                <button className="px-2 py-1 rounded-md bg-slate-900 text-emerald-400 font-semibold text-[10px] flex items-center gap-1">
+                <button className="px-2 py-1 rounded-md bg-slate-900 text-[#01E7DB] font-semibold text-[10px] flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-whatsapp"></span> WhatsApp
                 </button>
                 <button className="px-2 py-1 rounded-md bg-slate-900 text-pink-400 font-semibold text-[10px] flex items-center gap-1">
@@ -101,7 +153,7 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
                   </div>
                   <p className="text-slate-300 text-[11px] truncate">Can I pay via UPI for the Olive Tote?</p>
                   <div className="flex items-center gap-1.5 mt-2">
-                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">WhatsApp</span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#007FFB]/20 text-[#01E7DB] border border-[#007FFB]/30">WhatsApp</span>
                     <span className="px-1.5 py-0.5 rounded text-[9px] font-medium bg-slate-700 text-slate-300">via Meta Ad</span>
                   </div>
                 </div>
@@ -141,24 +193,24 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
               {/* Thread Header */}
               <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center font-bold text-emerald-400">
+                  <div className="w-8 h-8 rounded-full bg-[#007FFB]/20 border border-[#007FFB]/30 flex items-center justify-center font-bold text-[#007FFB]">
                     SJ
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-slate-100 text-sm">Sarah Jenkins</span>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">+91 98765 43210</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-[#01E7DB]/20 text-[#01E7DB] font-semibold">+91 98765 43210</span>
                     </div>
                     <p className="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5">
-                      <span className="text-blue-400">via ad:</span> "Summer Bag Collection 2026" • Click ID: fb.1.8492
+                      <span className="text-[#007FFB]">via ad:</span> "Summer Bag Collection 2026" • Click ID: fb.1.8492
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] px-2 py-1 rounded bg-slate-800 text-slate-300 font-medium">Assigned: Rahul</span>
-                  <span className="text-[10px] px-2 py-1 rounded bg-emerald-900/40 text-emerald-300 border border-emerald-700/50 flex items-center gap-1">
-                    <Clock className="w-3 h-3" /> 24h Window: 18h left
+                  <span className="text-[10px] px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700/60 flex items-center gap-1">
+                    <Clock className="w-3 h-3 text-[#007FFB]" /> 24h Window: 18h left
                   </span>
                 </div>
               </div>
@@ -174,10 +226,10 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
                 </div>
 
                 {/* AI Suggest Reply Copilot Widget */}
-                <div className="p-3.5 rounded-xl bg-gradient-to-r from-brand-950/90 to-slate-900/90 border border-brand-700/60 shadow-lg">
+                <div className="p-3.5 rounded-xl bg-gradient-to-r from-[#09152b] to-[#0d1e3d] border border-[#007FFB]/40 shadow-lg">
                   <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-1.5 text-brand-300 font-bold text-xs">
-                      <Sparkles className="w-3.5 h-3.5 text-brand-400 animate-pulse" />
+                    <div className="flex items-center gap-1.5 text-[#01E7DB] font-bold text-xs">
+                      <Sparkles className="w-3.5 h-3.5 text-[#01E7DB] animate-pulse" />
                       <span>AI Suggest Reply (Tenant Knowledge Grounded)</span>
                     </div>
                     <span className="text-[10px] text-slate-400">Confidence: High (94%)</span>
@@ -189,7 +241,7 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
                     <span className="text-[10px] text-slate-400">Drafted from tenant catalog & FAQ</span>
                     <div className="flex gap-2">
                       <button className="px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:bg-slate-700 text-[11px] font-medium transition">Edit</button>
-                      <button className="px-3 py-1 rounded bg-brand-600 text-white hover:bg-brand-500 text-[11px] font-bold transition flex items-center gap-1">
+                      <button className="px-3 py-1 rounded bg-[#007FFB] text-white hover:bg-[#006bd1] text-[11px] font-bold transition flex items-center gap-1 shadow-sm">
                         <span>Insert Draft</span>
                       </button>
                     </div>
@@ -198,13 +250,13 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
 
                 {/* Product & Payment Link Preview */}
                 <div className="flex justify-end">
-                  <div className="max-w-xs p-3 rounded-2xl rounded-tr-sm bg-emerald-950/60 border border-emerald-700/50 text-slate-200">
-                    <div className="text-[10px] font-bold text-emerald-400 mb-1">WhatsApp Catalog Item</div>
+                  <div className="max-w-xs p-3 rounded-2xl rounded-tr-sm bg-[#071326] border border-[#007FFB]/40 text-slate-200">
+                    <div className="text-[10px] font-bold text-[#01E7DB] mb-1">WhatsApp Catalog Item</div>
                     <p className="text-xs font-semibold">Artisan Leather Tote — Olive Edition</p>
-                    <p className="text-xs text-emerald-300 font-bold mt-1">₹1,499.00</p>
-                    <div className="mt-2 pt-2 border-t border-emerald-800/60 flex items-center justify-between text-[11px]">
-                      <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">Pay via Razorpay</span>
-                      <CheckCheck className="w-3.5 h-3.5 text-emerald-400" />
+                    <p className="text-xs text-[#01E7DB] font-bold mt-1">₹1,499.00</p>
+                    <div className="mt-2 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px]">
+                      <span className="px-2 py-0.5 rounded bg-[#007FFB]/20 text-blue-300 font-bold">Pay via Razorpay</span>
+                      <CheckCheck className="w-3.5 h-3.5 text-[#01E7DB]" />
                     </div>
                   </div>
                 </div>
@@ -231,7 +283,7 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
           <div className="p-6 bg-[#080d19] min-h-[440px] flex flex-col justify-between">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-6">
               <div className="flex items-center gap-2">
-                <Bot className="w-4 h-4 text-emerald-400" />
+                <Bot className="w-4 h-4 text-[#01E7DB]" />
                 <span className="font-bold text-sm text-slate-100">Visual Multi-Turn Flow Canvas</span>
                 <Badge variant="whatsapp" size="sm">WhatsApp Only</Badge>
               </div>
@@ -249,7 +301,7 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
                 <p className="text-[11px] text-slate-400 mt-1.5 font-mono bg-slate-950 p-1.5 rounded">
                   /catalog|pricing|order/i
                 </p>
-                <div className="mt-3 text-[10px] text-emerald-400 font-semibold">Rule Type: WhatsApp Trigger</div>
+                <div className="mt-3 text-[10px] text-[#01E7DB] font-semibold">Rule Type: WhatsApp Trigger</div>
               </div>
 
               {/* Step 2 */}
@@ -266,8 +318,8 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
 
               {/* Step 3 (Branching) */}
               <div className="space-y-3">
-                <div className="p-3 rounded-xl bg-emerald-950/50 border border-emerald-600/60">
-                  <div className="text-[10px] uppercase font-bold text-emerald-400">High Confidence (Outcome A)</div>
+                <div className="p-3 rounded-xl bg-[#071326] border border-[#007FFB]/50">
+                  <div className="text-[10px] uppercase font-bold text-[#01E7DB]">High Confidence (Outcome A)</div>
                   <div className="text-xs text-slate-200 mt-0.5">Send grounded response + Razorpay payment button</div>
                 </div>
                 <div className="p-3 rounded-xl bg-amber-950/50 border border-amber-600/60">
@@ -279,7 +331,7 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
 
             <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
               <span>Appointment booking flow includes anti-collision concurrent slot locks</span>
-              <span className="font-mono text-emerald-400 text-[11px]">Active in Production</span>
+              <span className="font-mono text-[#01E7DB] text-[11px]">Active in Production</span>
             </div>
           </div>
         ) : variant === 'broadcast' ? (
@@ -296,12 +348,12 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
               <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
                 <span className="text-[10px] text-slate-400 uppercase font-bold">Target Segment</span>
                 <p className="text-base font-bold text-white mt-1">VIP Customers</p>
-                <span className="text-[10px] text-emerald-400">1,200 contacts</span>
+                <span className="text-[10px] text-[#01E7DB]">1,200 contacts</span>
               </div>
               <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
                 <span className="text-[10px] text-slate-400 uppercase font-bold">Delivered Rate</span>
                 <p className="text-base font-bold text-white mt-1">98.4%</p>
-                <span className="text-[10px] text-emerald-400">Live receipt hook</span>
+                <span className="text-[10px] text-[#01E7DB]">Live receipt hook</span>
               </div>
               <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
                 <span className="text-[10px] text-slate-400 uppercase font-bold">Read Rate</span>
@@ -318,7 +370,7 @@ export const ScreenshotFrame: React.FC<ScreenshotFrameProps> = ({
             <div className="p-4 rounded-xl bg-slate-900/70 border border-slate-800">
               <div className="flex items-center justify-between text-xs mb-2">
                 <span className="font-bold text-slate-200">Campaign: Diwali VIP Early Access</span>
-                <span className="text-emerald-400 font-mono text-[11px]">Scheduled & Ready</span>
+                <span className="text-[#01E7DB] font-mono text-[11px]">Scheduled & Ready</span>
               </div>
               <p className="text-xs text-slate-400">
                 Native delayed delivery queued for 09:00 AM IST. Includes cancel-before-send protection.

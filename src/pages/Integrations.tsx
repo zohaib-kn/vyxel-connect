@@ -11,9 +11,9 @@ import { CodeBlock } from '../components/ui/CodeBlock';
 export const Integrations: React.FC = () => {
   const getIcon = (id: string) => {
     switch (id) {
-      case 'shopify': return <ShoppingBag className="w-6 h-6 text-emerald-600" />;
+      case 'shopify': return <ShoppingBag className="w-6 h-6 text-[#007FFB]" />;
       case 'woocommerce': return <Boxes className="w-6 h-6 text-purple-600" />;
-      case 'razorpay': return <CreditCard className="w-6 h-6 text-blue-600" />;
+      case 'razorpay': return <CreditCard className="w-6 h-6 text-[#007FFB]" />;
       case 'automation-tools': return <Workflow className="w-6 h-6 text-amber-600" />;
       case 'custom-crm': return <Database className="w-6 h-6 text-indigo-600" />;
       default: return <Workflow className="w-6 h-6 text-slate-600" />;
@@ -71,7 +71,7 @@ export const Integrations: React.FC = () => {
                   </span>
                   {item.capabilities.map((cap, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#007FFB] shrink-0 mt-0.5" />
                       <span>{cap}</span>
                     </div>
                   ))}
@@ -102,7 +102,7 @@ export const Integrations: React.FC = () => {
                 E-Commerce Trigger Payload Structure
               </h3>
             </div>
-            <span className="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded border border-emerald-700/50">
+            <span className="text-xs font-mono text-[#01E7DB] bg-[#01E7DB]/10 px-3 py-1 rounded border border-[#01E7DB]/30">
               Immediate Dispatch
             </span>
           </div>

@@ -1,103 +1,133 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Sparkles, Clock, RefreshCw, 
-  Tag, UserCheck, CheckCircle2, ArrowRight
+  UserCheck, ArrowRight, CheckCircle2,
+  ShieldCheck, ArrowUpRight
 } from 'lucide-react';
-import { SectionHeading } from '../ui/SectionHeading';
-import { Badge } from '../ui/Badge';
-import { ScreenshotFrame } from '../ui/ScreenshotFrame';
-import { Button } from '../ui/Button';
+import { DeviceFrame } from '../ui/DeviceFrame';
+import { cn } from '../../lib/utils';
 
 export const UnifiedInbox: React.FC = () => {
+  const [activeFeature, setActiveFeature] = useState(0);
+
+  const features = [
+    {
+      title: "Real-Time SSE + 30s Polling Fallback",
+      desc: "Inbound messages stream instantaneously via Server-Sent Events. Automatic 30-second polling backup guarantees zero dropped inquiries during network hiccups.",
+      tag: "SSE Active · 24ms",
+      icon: <RefreshCw className="w-4 h-4 text-[#007FFB]" />,
+    },
+    {
+      title: "Automatic 24h Session Window Guard",
+      desc: "Live countdown timer prevents delivery rejection. When customer session closes, the interface seamlessly switches from free-text to approved Meta templates.",
+      tag: "Session Protected",
+      icon: <Clock className="w-4 h-4 text-[#007FFB]" />,
+    },
+    {
+      title: "AI Suggest Reply Copilot",
+      desc: "Agents click a single button to draft contextual replies generated from thread history and your tenant knowledge base, ready for quick edit and dispatch.",
+      tag: "Grounded AI Draft",
+      icon: <Sparkles className="w-4 h-4 text-purple-600" />,
+    },
+    {
+      title: "Routing & Ad Attribution",
+      desc: "Assign conversations by role, add searchable tags, and see exactly which Meta ad click ID generated the thread right above the conversation header.",
+      tag: "First-Touch Ad ID",
+      icon: <UserCheck className="w-4 h-4 text-[#007FFB]" />,
+    },
+  ];
+
   return (
-    <section id="inbox" className="py-20 sm:py-28 bg-white border-b border-slate-200/80">
+    <section id="inbox" className="py-20 sm:py-28 bg-white border-b border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="UNIFIED TEAM INBOX"
-          title="Resolve conversations faster with complete customer context."
-          description="Bring WhatsApp, Instagram DM, and Messenger into a synchronized workspace with real-time SSE updates, automatic 24-hour session protection, and AI reply drafting."
-          align="center"
-          badge={<Badge variant="whatsapp">Official Meta Channels</Badge>}
-        />
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Feature highlights column */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-300 transition-colors">
-              <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center shrink-0 font-bold border border-brand-200">
-                  <RefreshCw className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-base font-bold text-slate-900">Real-Time SSE + 30s Polling Fallback</h4>
-                  <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                    Messages stream instantaneously via Server-Sent Events. If temporary connectivity hiccups occur, automatic 30-second polling ensures zero missed inquiries.
-                  </p>
-                </div>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-center">
+          {/* Left Column: Integrated Narrative & Feature Selector */}
+          <div className="lg:col-span-5">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#007FFB]/10 px-3.5 py-1.5 mb-4">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#01E7DB]"></span>
+              <span className="text-xs font-bold text-[#007FFB] tracking-wide">
+                UNIFIED TEAM INBOX
+              </span>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-300 transition-colors">
-              <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 font-bold border border-emerald-200">
-                  <Clock className="w-4 h-4" />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.04em] text-slate-900 leading-[1.05]">
+              Resolve conversations faster with <span className="text-[#007FFB]">complete customer context.</span>
+            </h2>
+
+            <p className="mt-5 text-base text-slate-600 leading-relaxed">
+              Bring WhatsApp, Instagram DM, and Messenger into a synchronized workspace with real-time SSE streaming, automatic 24-hour session protection, and AI reply drafting.
+            </p>
+
+            {/* Interactive Feature Accordion List */}
+            <div className="mt-8 space-y-3">
+              {features.map((item, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => setActiveFeature(idx)}
+                  className={cn(
+                    "p-4 rounded-2xl border transition-all cursor-pointer",
+                    activeFeature === idx
+                      ? "bg-blue-50/50 border-[#007FFB]/40 shadow-sm"
+                      : "bg-white border-slate-200 hover:border-slate-300"
+                  )}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div className={cn(
+                        "w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold",
+                        activeFeature === idx ? "bg-[#007FFB]/10 text-[#007FFB]" : "bg-slate-100 text-slate-600"
+                      )}>
+                        {item.icon}
+                      </div>
+                      <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
+                    </div>
+                    <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+                      {item.tag}
+                    </span>
+                  </div>
+                  {activeFeature === idx && (
+                    <p className="mt-2 text-xs text-slate-600 leading-relaxed pl-9 animate-fadeIn">
+                      {item.desc}
+                    </p>
+                  )}
                 </div>
-                <div>
-                  <h4 className="text-base font-bold text-slate-900">Automatic 24h Session Window Guard</h4>
-                  <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                    Real-time countdown prevents delivery rejection. When the customer session expires, the interface automatically switches from free-text to approved Meta templates.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-300 transition-colors">
-              <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center shrink-0 font-bold border border-purple-200">
-                  <Sparkles className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-base font-bold text-slate-900">AI Suggest Reply Copilot</h4>
-                  <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                    Agents click a single button to draft contextual replies generated from the thread history and your tenant knowledge base, ready for quick edit and dispatch.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-300 transition-colors">
-              <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 font-bold border border-blue-200">
-                  <UserCheck className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-base font-bold text-slate-900">Routing &amp; Ad Attribution</h4>
-                  <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                    Assign conversations by team role, add searchable tags, and see exactly which Meta ad click ID generated the inbound thread directly above the message.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <Button
-                variant="primary"
+            <div className="mt-8 flex items-center gap-4">
+              <a
                 href="https://provider.digi-wire.com/signup"
-                isExternal
-                iconRight={<ArrowRight className="w-4 h-4" />}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#007FFB] px-6 py-3 text-sm font-bold text-white shadow-[0_10px_20px_rgba(0,127,251,0.25)] hover:bg-[#0066d6] transition-all"
               >
-                Experience the inbox
-              </Button>
+                <span>Experience live inbox</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+              <span className="text-xs font-medium text-slate-500">
+                Works on Chrome, Safari &amp; Edge
+              </span>
             </div>
           </div>
 
-          {/* Interactive Screen Preview */}
+          {/* Right Column: Elevated Live Product Window */}
           <div className="lg:col-span-7">
-            <ScreenshotFrame
-              title="Vyxel Unified Inbox"
-              subtitle="Thread #4089 · Active Session Window · SSE Realtime"
-              variant="inbox"
+            <DeviceFrame
+              imageSrc="/screenshots/inbox.png"
+              imageAlt="Vyxel Connect Unified Team Inbox with Multi-Channel Conversations"
+              blobColor="cyan"
+              blobPosition="top-right"
+              className="max-w-[760px] mx-auto"
             />
+            <div className="mt-4 flex items-center justify-between text-xs text-slate-500 px-2">
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#007FFB]" />
+                Role-based agent isolation active
+              </span>
+              <span className="font-mono text-[11px] text-slate-400">
+                SSE Status: CONNECTED
+              </span>
+            </div>
           </div>
         </div>
       </div>

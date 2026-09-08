@@ -40,7 +40,7 @@ export const Security: React.FC = () => {
                 <div className="space-y-2 pt-4 border-t border-slate-100">
                   {pillar.points.map((pt, pIdx) => (
                     <div key={pIdx} className="flex items-start gap-2.5 text-xs text-slate-700">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#007FFB] shrink-0 mt-0.5" />
                       <span>{pt}</span>
                     </div>
                   ))}
@@ -53,7 +53,7 @@ export const Security: React.FC = () => {
         {/* Meta Official Policies & Compliance */}
         <div className="max-w-4xl mx-auto rounded-3xl bg-white border border-slate-200/80 p-8 sm:p-10 shadow-soft-sm">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-[#01E7DB]/15 text-[#007FFB] flex items-center justify-center font-bold">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>

@@ -11,11 +11,11 @@ import { useCasesList } from '../data/useCases';
 export const Solutions: React.FC = () => {
   const getIcon = (icon: string) => {
     switch (icon) {
-      case 'ShoppingBag': return <ShoppingBag className="w-6 h-6 text-emerald-600" />;
-      case 'Headphones': return <Headphones className="w-6 h-6 text-blue-600" />;
+      case 'ShoppingBag': return <ShoppingBag className="w-6 h-6 text-[#007FFB]" />;
+      case 'Headphones': return <Headphones className="w-6 h-6 text-[#007FFB]" />;
       case 'Megaphone': return <Megaphone className="w-6 h-6 text-purple-600" />;
       case 'CalendarCheck': return <CalendarCheck className="w-6 h-6 text-amber-600" />;
-      default: return <CheckCircle2 className="w-6 h-6 text-brand-600" />;
+      default: return <CheckCircle2 className="w-6 h-6 text-[#007FFB]" />;
     }
   };
 
@@ -43,11 +43,11 @@ export const Solutions: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900">{uc.title}</h3>
-                    <span className="text-xs font-semibold text-brand-600">{uc.targetRole}</span>
+                    <span className="text-xs font-semibold text-[#007FFB]">{uc.targetRole}</span>
                   </div>
                 </div>
 
-                <Badge variant="whatsapp">{uc.channelSupport}</Badge>
+                <Badge variant="blue">{uc.channelSupport}</Badge>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -60,7 +60,7 @@ export const Solutions: React.FC = () => {
                   <div className="space-y-2.5">
                     {uc.highlights.map((hl, i) => (
                       <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-[#007FFB] shrink-0 mt-0.5" />
                         <span>{hl}</span>
                       </div>
                     ))}
@@ -75,7 +75,7 @@ export const Solutions: React.FC = () => {
                     Connect your Meta channel and activate the {uc.title} workflow template in under 5 minutes.
                   </p>
                   <Button
-                    variant="whatsapp"
+                    variant="primary"
                     href="https://provider.digi-wire.com/signup"
                     isExternal
                     iconRight={<ArrowRight className="w-4 h-4" />}

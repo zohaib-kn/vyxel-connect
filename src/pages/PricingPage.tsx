@@ -63,7 +63,7 @@ export const PricingPage: React.FC = () => {
               key={tier.name}
               className={`rounded-3xl p-7 flex flex-col justify-between transition-all duration-200 relative ${
                 tier.popular
-                  ? "bg-white border-2 border-brand-500 shadow-soft-lg ring-4 ring-brand-500/10 -translate-y-1"
+                  ? "bg-white border-2 border-[#007FFB] shadow-soft-lg ring-4 ring-[#007FFB]/10 -translate-y-1"
                   : "bg-white border border-slate-200/80 shadow-soft-sm"
               }`}
             >
@@ -78,7 +78,7 @@ export const PricingPage: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-lg font-bold text-slate-900">{tier.name}</h3>
-                  <Badge variant="whatsapp" size="sm">
+                  <Badge variant="blue" size="sm">
                     +{tier.markup} markup
                   </Badge>
                 </div>
@@ -112,7 +112,7 @@ export const PricingPage: React.FC = () => {
                   <div className="pt-2 space-y-2">
                     {tier.features.map((feat, i) => (
                       <div key={i} className="flex items-start gap-2 text-slate-600">
-                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#007FFB] shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -122,7 +122,7 @@ export const PricingPage: React.FC = () => {
 
               <div>
                 <Button
-                  variant={tier.popular ? "whatsapp" : "outline"}
+                  variant={tier.popular ? "primary" : "outline"}
                   className="w-full"
                   href={tier.ctaLink}
                   isExternal={tier.ctaLink.startsWith('http') || tier.ctaLink.startsWith('#')}
@@ -143,8 +143,8 @@ export const PricingPage: React.FC = () => {
             Meta operates an official category-based conversation pricing model (Marketing, Utility, Authentication, and Service). Unlike legacy aggregators who bundle massive hidden surcharges into obscure wallet credits, Vyxel Connect passes Meta's exact wholesale conversation cost directly to your invoice with a single, transparent markup.
           </p>
 
-          <div className="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-200 mb-6">
-            <div className="flex items-center gap-2 text-emerald-800 font-bold text-sm mb-2">
+          <div className="p-6 rounded-2xl bg-blue-50/50 border border-blue-200 mb-6">
+            <div className="flex items-center gap-2 text-[#007FFB] font-bold text-sm mb-2">
               <Calculator className="w-4 h-4" />
               <span>{pricingNotice.workedExample.title}</span>
             </div>
@@ -162,8 +162,8 @@ export const PricingPage: React.FC = () => {
                 <span className="font-bold text-slate-900 text-sm">{pricingNotice.workedExample.markupOnGrowth}</span>
               </div>
               <div>
-                <span className="text-emerald-800 font-bold block">Total Message Billing</span>
-                <span className="font-bold text-emerald-900 text-sm">~{pricingNotice.workedExample.totalBilledForMessages}</span>
+                <span className="text-[#007FFB] font-bold block">Total Message Billing</span>
+                <span className="font-bold text-slate-900 text-sm">~{pricingNotice.workedExample.totalBilledForMessages}</span>
               </div>
             </div>
             <p className="mt-3 text-[11px] text-slate-500 italic">
@@ -172,7 +172,7 @@ export const PricingPage: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <ShieldCheck className="w-4 h-4 text-[#007FFB]" />
             <span>Note: {pricingNotice.disclaimer}</span>
           </div>
         </div>

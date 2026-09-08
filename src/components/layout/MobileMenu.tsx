@@ -26,7 +26,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       <div className="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-2xl p-6 flex flex-col justify-between z-10 border-l border-slate-200">
         <div>
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-            <span className="font-display font-bold text-slate-900 text-base">Navigation</span>
+            <Link to="/" onClick={onClose} className="flex items-center">
+              <img
+                src="/logo.png"
+                alt="Vyxel Connecter"
+                className="h-7 w-auto object-contain"
+              />
+            </Link>
             <button
               onClick={onClose}
               aria-label="Close menu"
@@ -46,7 +52,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                   onClick={onClose}
                   className={`block px-4 py-2.5 rounded-xl text-sm font-semibold transition ${
                     isActive
-                      ? "text-brand-600 bg-brand-50"
+                      ? "text-[#007FFB] bg-[#007FFB]/10 font-bold"
                       : "text-slate-700 hover:bg-slate-100"
                   }`}
                 >
@@ -59,7 +65,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
         <div className="pt-6 border-t border-slate-100 space-y-3">
           <div className="flex items-center gap-2 text-xs text-slate-500 px-1 mb-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <ShieldCheck className="w-4 h-4 text-[#007FFB]" />
             <span>Official Meta BSP Infrastructure</span>
           </div>
           <Button
@@ -71,7 +77,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             Log in
           </Button>
           <Button
-            variant="whatsapp"
+            variant="gradient"
             className="w-full"
             href="https://provider.digi-wire.com/signup"
             isExternal
@@ -84,3 +90,5 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
+
+export default MobileMenu;

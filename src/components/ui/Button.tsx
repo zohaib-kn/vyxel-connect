@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '../../lib/utils';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'whatsapp' | 'dark';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'whatsapp' | 'dark' | 'gradient' | 'cyan';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   isExternal?: boolean;
@@ -31,9 +31,11 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const variantStyles = {
-    primary: "bg-brand-600 text-white hover:bg-brand-700 hover:shadow-glow-blue focus-visible:ring-brand-500",
+    primary: "bg-[#007FFB] text-white hover:bg-[#006bd1] hover:shadow-glow-blue focus-visible:ring-[#007FFB]",
     secondary: "bg-slate-900 text-white hover:bg-slate-800 shadow-soft-sm focus-visible:ring-slate-900",
-    whatsapp: "bg-whatsapp text-slate-950 font-bold hover:bg-[#20ba5a] hover:shadow-glow-green focus-visible:ring-whatsapp",
+    gradient: "bg-gradient-to-r from-[#007FFB] to-[#01E7DB] text-slate-950 font-bold hover:opacity-95 hover:shadow-glow-cyan focus-visible:ring-[#01E7DB]",
+    cyan: "bg-[#01E7DB] text-slate-950 font-bold hover:bg-[#00d0c5] hover:shadow-glow-cyan focus-visible:ring-[#01E7DB]",
+    whatsapp: "bg-[#007FFB] text-white font-bold hover:bg-[#006bd1] hover:shadow-glow-blue focus-visible:ring-[#007FFB]",
     outline: "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-400 focus-visible:ring-slate-400",
     ghost: "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 focus-visible:ring-slate-300",
     dark: "border border-slate-700/80 bg-slate-900/90 text-slate-200 hover:bg-slate-800 hover:border-slate-600 focus-visible:ring-slate-600",

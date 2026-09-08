@@ -104,14 +104,14 @@ app.post('/api/webhook', (req, res) => {
           </div>
 
           <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+            <div className="w-10 h-10 rounded-xl bg-[#01E7DB]/10 border border-[#01E7DB]/20 text-[#01E7DB] flex items-center justify-center mb-4">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-white mb-1">HMAC Signature Check</h3>
             <p className="text-xs text-slate-400 leading-relaxed mb-3">
               Outbound webhooks are cryptographically signed using SHA-256 HMAC:
             </p>
-            <div className="p-2 rounded bg-slate-950 font-mono text-[11px] text-emerald-300 border border-slate-800">
+            <div className="p-2 rounded bg-slate-950 font-mono text-[11px] text-[#01E7DB] border border-slate-800">
               Header: x-vyxel-signature
             </div>
           </div>
@@ -200,7 +200,7 @@ app.post('/api/webhook', (req, res) => {
               <tbody className="divide-y divide-slate-800/60 font-mono">
                 {endpoints.map((ep, i) => (
                   <tr key={i} className="hover:bg-slate-800/40 transition">
-                    <td className="py-3.5 px-3 font-bold text-emerald-400">{ep.method}</td>
+                    <td className="py-3.5 px-3 font-bold text-[#01E7DB]">{ep.method}</td>
                     <td className="py-3.5 px-3 text-slate-200">{ep.path}</td>
                     <td className="py-3.5 px-3 text-slate-400 font-sans">{ep.desc}</td>
                   </tr>
