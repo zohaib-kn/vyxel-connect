@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-slate-800 bg-[#f8fafc] font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-slate-900;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.14em];
+  }
+
+  .glass-card {
+    @apply bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-soft-sm hover:shadow-soft-md transition-all duration-300;
+  }
+
+  .glass-card-dark {
+    @apply bg-slate-900/80 backdrop-blur-md border border-slate-800 shadow-soft-lg;
+  }
+
+  .radial-glow-blue {
+    background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12), transparent 70%);
+  }
+
+  .radial-glow-green {
+    background: radial-gradient(circle at 50% 0%, rgba(37, 211, 102, 0.12), transparent 70%);
+  }
+
+  .pattern-grid {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(226, 232, 240, 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
