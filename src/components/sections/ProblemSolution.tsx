@@ -6,7 +6,7 @@ import {
   Smartphone, Database, SplitSquareVertical
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 
 export const ProblemSolution: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'fragmented' | 'vyxel'>('vyxel');
@@ -177,12 +177,10 @@ export const ProblemSolution: React.FC = () => {
                   </div>
                   
                   {/* Real Vyxel Channels Setup Visual */}
-                  <DeviceFrame
-                    imageSrc="/screenshots/channels.png"
-                    imageAlt="Vyxel Omnichannel Connected Channels Setup"
+                  <LaptopFrame
+                    framedImageSrc="/screenshots/channels-framed.png"
                     blobColor="blue"
                     blobPosition="top-right"
-                    notch={true}
                     className="w-full"
                   />
 

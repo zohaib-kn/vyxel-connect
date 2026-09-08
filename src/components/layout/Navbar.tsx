@@ -58,35 +58,23 @@ export const Navbar: React.FC = () => {
 
           {/* Right action button */}
           <div className="hidden lg:flex justify-end items-center gap-4">
-            <a
-              href="https://provider.digi-wire.com/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[13px] font-bold text-slate-600 hover:text-[#007FFB] transition-colors"
+            <Link
+              to="/contact"
+              className={`rounded-full bg-[#007FFB] px-5 py-2.5 text-[13px] font-bold text-white shadow-[0_4px_14px_rgba(0,127,251,0.25)] transition-all hover:-translate-y-0.5 hover:bg-[#006bd1] inline-flex items-center gap-1.5 ${location.pathname === '/contact' ? 'opacity-90' : ''}`}
             >
-              Log in
-            </a>
-            <a
-              href="https://provider.digi-wire.com/signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[#007FFB] px-5 py-2.5 text-[13px] font-bold text-white shadow-[0_4px_14px_rgba(0,127,251,0.25)] transition-all hover:-translate-y-0.5 hover:bg-[#006bd1] inline-flex items-center gap-1.5"
-            >
-              <span>Start free trial</span>
+              <span>Contact</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
           <div className="flex lg:hidden justify-end items-center gap-2">
-            <a
-              href="https://provider.digi-wire.com/signup"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/contact"
               className="rounded-full bg-[#007FFB] px-4 py-2 text-xs font-bold text-white shadow-sm"
             >
-              Trial
-            </a>
+              Contact
+            </Link>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

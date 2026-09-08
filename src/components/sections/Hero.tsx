@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 
 export const Hero: React.FC = () => {
   return (
@@ -52,12 +52,11 @@ export const Hero: React.FC = () => {
 
           {/* Right Column: Real Vyxel Superadmin Dashboard in Device Frame */}
           <div className="relative lg:-translate-y-2">
-            <DeviceFrame
-              imageSrc="/screenshots/dashboard.png"
-              imageAlt="Vyxel Connect Superadmin Live Analytics & Operations Dashboard"
-              blobColor="yellow"
-              blobPosition="bottom-left"
-              className="max-w-[720px] mx-auto"
+            <LaptopFrame
+              framedImageSrc="/screenshots/dashboard-framed.png"
+              blobColor="blue"
+              blobPosition="center"
+              className="max-w-[760px] mx-auto"
             />
             <p className="mt-4 text-center text-sm font-medium text-slate-500">
               Built for support teams, sales teams and commerce operators.

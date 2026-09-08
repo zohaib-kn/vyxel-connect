@@ -3,8 +3,7 @@ import {
   Bot, Sparkles, GitBranch, CalendarCheck, 
   ArrowRight, CheckCircle2, ArrowUpRight
 } from 'lucide-react';
-import { ScreenshotFrame } from '../ui/ScreenshotFrame';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 
 export const AIChatbot: React.FC = () => {
   return (
@@ -38,19 +37,12 @@ export const AIChatbot: React.FC = () => {
 
         {/* Visual Builder Canvas Showcase */}
         <div className="mb-14">
-          <DeviceFrame
+          <LaptopFrame
+            framedImageSrc="/screenshots/chatbot-framed.png"
             blobColor="cyan"
             blobPosition="center"
-            notch={true}
             className="max-w-[1000px] mx-auto"
-          >
-            <ScreenshotFrame
-              title="Vyxel Flow Canvas"
-              subtitle="Rule Triggers → Ingested Knowledge → Agent Handoff"
-              variant="chatbot-builder"
-              className="rounded-none border-0"
-            />
-          </DeviceFrame>
+          />
         </div>
 
         {/* 4-Step Conversation Lifecycle Progression (DealDesk Layout Style) */}

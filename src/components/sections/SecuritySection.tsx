@@ -4,7 +4,7 @@ import {
   RefreshCw, CheckCircle2, ArrowRight, ArrowUpRight 
 } from 'lucide-react';
 import { securityPillars } from '../../data/security';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 
 export const SecuritySection: React.FC = () => {
   return (
@@ -34,13 +34,12 @@ export const SecuritySection: React.FC = () => {
 
         {/* Role Hierarchy Visual Banner (Dark Anchor Container in DeviceFrame) */}
         <div className="mb-12">
-          <DeviceFrame
+          <LaptopFrame
             blobColor="purple"
             blobPosition="center"
-            notch={true}
             className="w-full"
-            innerClassName="p-6 sm:p-8 bg-[#09152b]"
           >
+            <div className="w-full h-full overflow-auto p-4 sm:p-6 bg-[#09152b]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-800">
               <div>
                 <span className="text-xs font-mono font-bold text-[#01E7DB] uppercase tracking-wider">
@@ -71,7 +70,8 @@ export const SecuritySection: React.FC = () => {
                 <p className="text-xs text-slate-400 mt-1">Handles customer threads, replies, tags, and AI suggestions with no access to billing.</p>
               </div>
             </div>
-          </DeviceFrame>
+            </div>
+          </LaptopFrame>
         </div>
 
         {/* Security Pillars Asymmetric 2x2 Grid */}

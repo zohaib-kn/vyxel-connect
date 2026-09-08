@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Terminal, Key, ShieldCheck, ArrowRight, Check, ArrowUpRight, Cpu } from 'lucide-react';
 import { CodeBlock } from '../ui/CodeBlock';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 
 export const DeveloperPlatform: React.FC = () => {
-  const [activeSnippet, setActiveSnippet] = useState<'curl' | 'node' | 'python'>('curl');
+  const [activeSnippet, setActiveSnippet] = useState<'curl' | 'node' | 'python' | 'dashboard'>('dashboard');
 
   const curlExample = `curl -X POST "https://api.vyxel.digi-wire.com/v1/messages" \\
   -H "Authorization: Bearer vyx_live_8f3a9e2d1c7b" \\
@@ -154,7 +154,18 @@ print(response.json())`;
 
           {/* Interactive Code Window (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <button
+                type="button"
+                onClick={() => setActiveSnippet('dashboard')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition ${
+                  activeSnippet === 'dashboard'
+                    ? 'bg-gradient-to-r from-[#007FFB] to-[#01E7DB] text-slate-900 shadow-sm'
+                    : 'bg-slate-800 text-slate-400 hover:text-white'
+                }`}
+              >
+                Live Dashboard
+              </button>
               <button
                 type="button"
                 onClick={() => setActiveSnippet('curl')}
@@ -190,36 +201,47 @@ print(response.json())`;
               </button>
             </div>
 
-            <DeviceFrame
-              blobColor="cyan"
-              blobPosition="top-right"
-              notch={true}
-              className="w-full"
-            >
-              <CodeBlock
-                code={
-                  activeSnippet === 'curl'
-                    ? curlExample
-                    : activeSnippet === 'node'
-                    ? nodeExample
-                    : pythonExample
-                }
-                language={
-                  activeSnippet === 'curl'
-                    ? 'bash'
-                    : activeSnippet === 'node'
-                    ? 'javascript'
-                    : 'python'
-                }
-                filename={
-                  activeSnippet === 'curl'
-                    ? 'send-message.sh'
-                    : activeSnippet === 'node'
-                    ? 'verify-webhook.js'
-                    : 'send_whatsapp.py'
-                }
+            {activeSnippet === 'dashboard' ? (
+              <LaptopFrame
+                framedImageSrc="/screenshots/developer-framed.png"
+                blobColor="cyan"
+                blobPosition="top-right"
+                className="w-full"
               />
-            </DeviceFrame>
+            ) : (
+              <LaptopFrame
+                blobColor="cyan"
+                blobPosition="top-right"
+                className="w-full"
+              >
+                <div className="w-full h-full overflow-auto bg-[#0b1120] text-xs">
+                  <CodeBlock
+                    code={
+                      activeSnippet === 'curl'
+                        ? curlExample
+                        : activeSnippet === 'node'
+                        ? nodeExample
+                        : pythonExample
+                    }
+                    language={
+                      activeSnippet === 'curl'
+                        ? 'bash'
+                        : activeSnippet === 'node'
+                        ? 'javascript'
+                        : 'python'
+                    }
+                    filename={
+                      activeSnippet === 'curl'
+                        ? 'send-message.sh'
+                        : activeSnippet === 'node'
+                        ? 'verify-webhook.js'
+                        : 'send_whatsapp.py'
+                    }
+                    className="h-full rounded-none border-none shadow-none text-xs"
+                  />
+                </div>
+              </LaptopFrame>
+            )}
           </div>
         </div>
       </div>

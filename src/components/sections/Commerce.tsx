@@ -1,11 +1,9 @@
 import React from 'react';
 import { 
-  ShoppingBag, CreditCard, RefreshCw, 
-  ArrowRight, CheckCircle2, ShieldCheck, Zap,
-  ArrowUpRight
+  ShoppingBag, CreditCard,
+  ArrowUpRight, ShieldCheck, Zap
 } from 'lucide-react';
-import { Badge } from '../ui/Badge';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 
 export const Commerce: React.FC = () => {
   return (
@@ -100,87 +98,14 @@ export const Commerce: React.FC = () => {
             </div>
           </div>
 
-          {/* Realistic WhatsApp In-Chat Commerce Mockup (6 cols) */}
+          {/* Real Product Catalog Screenshot (6 cols) */}
           <div className="lg:col-span-6">
-            <DeviceFrame
+            <LaptopFrame
+              framedImageSrc="/screenshots/catalog-framed.png"
               blobColor="gradient"
               blobPosition="center"
-              notch={true}
-              className="max-w-[480px] mx-auto"
-              innerClassName="p-4 sm:p-6 bg-[#0B1120]"
-            >
-              {/* WhatsApp Phone Top Bar */}
-              <div className="flex items-center justify-between pb-3.5 mb-3 border-b border-slate-800">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#007FFB] text-white flex items-center justify-center font-bold text-xs">
-                    WA
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-xs font-bold text-white">Acme Artisan Studio</span>
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#01E7DB]" />
-                    </div>
-                    <span className="text-[10px] text-[#01E7DB] font-medium">Official Business Account</span>
-                  </div>
-                </div>
-                <span className="text-[10px] font-mono text-[#01E7DB] bg-[#01E7DB]/10 px-2 py-0.5 rounded-full border border-[#01E7DB]/30">
-                  Active Thread
-                </span>
-              </div>
-
-              {/* Chat Thread */}
-              <div className="space-y-3 py-1 text-xs">
-                {/* Customer Message */}
-                <div className="flex justify-start">
-                  <div className="bg-slate-800 p-3 rounded-2xl rounded-tl-none max-w-[85%] text-slate-200">
-                    <p className="text-xs">Hi! Is the olive green artisan tote in stock?</p>
-                    <span className="text-[9px] text-slate-400 mt-1 block text-right font-mono">10:42 AM</span>
-                  </div>
-                </div>
-
-                {/* Bot / Agent Catalog Card Message */}
-                <div className="flex justify-end">
-                  <div className="bg-[#0a1832] border border-[#1b3663] p-3 rounded-2xl rounded-tr-none max-w-[88%] text-white space-y-2">
-                    <div className="h-28 w-full rounded-xl bg-gradient-to-tr from-[#0b2044] to-[#071328] flex flex-col items-center justify-center text-blue-100 relative overflow-hidden border border-[#1f427d]">
-                      <ShoppingBag className="w-7 h-7 text-[#01E7DB] mb-1" />
-                      <span className="text-xs font-bold">Artisan Leather Tote Bag</span>
-                      <span className="text-[10px] text-[#01E7DB]">Olive Green · Genuine Full-Grain</span>
-                    </div>
-
-                    <div className="flex items-center justify-between pt-1">
-                      <span className="font-extrabold text-white text-sm">₹1,499.00</span>
-                      <span className="text-[10px] text-slate-400 font-mono">SKU: TOT-OLV-01</span>
-                    </div>
-
-                    {/* Razorpay In-Chat Payment Link Button */}
-                    <div className="mt-2 pt-2 border-t border-slate-700/60">
-                      <a
-                        href="#commerce"
-                        className="w-full py-2.5 rounded-xl bg-[#007FFB] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm hover:bg-[#006bd1] transition-colors"
-                      >
-                        <CreditCard className="w-3.5 h-3.5" />
-                        <span>Pay ₹1,499.00 via Razorpay</span>
-                      </a>
-                    </div>
-                    <span className="text-[9px] text-slate-400 block text-right font-mono">10:43 AM · Sent</span>
-                  </div>
-                </div>
-
-                {/* Instant Confirmed State */}
-                <div className="p-3 rounded-2xl bg-[#091522] border border-[#01E7DB]/40 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#01E7DB]" />
-                    <div>
-                      <span className="text-xs font-bold text-white block">Payment Verified · ₹1,499.00</span>
-                      <span className="text-[10px] text-slate-400">Order #4092 · Razorpay UPI Confirmed</span>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-bold text-[#01E7DB] bg-[#01E7DB]/15 border border-[#01E7DB]/30 px-2 py-0.5 rounded font-mono">
-                    PAID
-                  </span>
-                </div>
-              </div>
-            </DeviceFrame>
+              className="max-w-[620px] mx-auto"
+            />
           </div>
         </div>
       </div>

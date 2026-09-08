@@ -5,7 +5,7 @@ import {
   ShieldCheck, Zap, Sparkles
 } from 'lucide-react';
 import { ScreenshotFrame } from '../ui/ScreenshotFrame';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 import { cn } from '../../lib/utils';
 
 interface ModuleItem {
@@ -172,29 +172,30 @@ export const ModuleExplorer: React.FC = () => {
 
           {/* Right: Large Mock Browser Chrome Window (8 cols on lg) */}
           <div className="lg:col-span-8">
-            <DeviceFrame
-              blobColor={activeTab === 0 ? "cyan" : activeTab === 1 ? "purple" : activeTab === 2 ? "blue" : activeTab === 3 ? "gradient" : "yellow"}
-              blobPosition="top-right"
-              notch={true}
-            >
-              {activeTab === 0 ? (
-                <img
-                  src="/screenshots/inbox.png"
-                  alt="Vyxel Connect Unified Multi-Channel Inbox"
-                  className="w-full h-auto object-cover block select-none"
-                />
-              ) : (
-                <ScreenshotFrame
-                  title={currentModule.name}
-                  subtitle={currentModule.tagline}
-                  variant={currentModule.variant}
-                  browserChrome={true}
-                  url={currentModule.url}
-                  theme="dark"
-                  className="rounded-none border-0"
-                />
-              )}
-            </DeviceFrame>
+            {activeTab === 0 ? (
+              <LaptopFrame
+                framedImageSrc="/screenshots/inbox-framed.png"
+                blobColor="cyan"
+                blobPosition="top-right"
+              />
+            ) : (
+              <LaptopFrame
+                blobColor={activeTab === 1 ? "purple" : activeTab === 2 ? "blue" : activeTab === 3 ? "gradient" : "yellow"}
+                blobPosition="top-right"
+              >
+                <div className="w-full h-full overflow-hidden">
+                  <ScreenshotFrame
+                    title={currentModule.name}
+                    subtitle={currentModule.tagline}
+                    variant={currentModule.variant}
+                    browserChrome={true}
+                    url={currentModule.url}
+                    theme="dark"
+                    className="rounded-none border-0 h-full"
+                  />
+                </div>
+              </LaptopFrame>
+            )}
 
             {/* Bottom Capability Highlights Row (StudyAbroad CRM Pattern) */}
             <div className="mt-5 rounded-2xl bg-[#f8fafc] border border-slate-200/80 p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">

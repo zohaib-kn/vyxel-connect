@@ -69,21 +69,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             <span>Official Meta BSP Infrastructure</span>
           </div>
           <Button
-            variant="outline"
+            variant="primary"
             className="w-full"
-            href="https://provider.digi-wire.com/login"
-            isExternal
-          >
-            Log in
-          </Button>
-          <Button
-            variant="gradient"
-            className="w-full"
-            href="https://provider.digi-wire.com/signup"
-            isExternal
+            href="/contact"
             iconRight={<ArrowRight className="w-4 h-4" />}
+            onClick={onClose}
           >
-            Start free trial
+            Contact us
           </Button>
         </div>
       </div>

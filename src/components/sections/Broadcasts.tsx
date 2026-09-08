@@ -3,29 +3,21 @@ import {
   Send, Clock, XCircle, BarChart3, 
   CheckCircle2, ArrowUpRight, ShieldCheck 
 } from 'lucide-react';
-import { ScreenshotFrame } from '../ui/ScreenshotFrame';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 
 export const Broadcasts: React.FC = () => {
   return (
     <section id="broadcasts" className="py-20 sm:py-28 bg-[#f8fafc] border-b border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-center">
-          {/* Left Column: Visual Showcase Window (7 cols) */}
+          {/* Left Column: Real Product Screenshot (7 cols) */}
           <div className="lg:col-span-7 order-2 lg:order-1">
-            <DeviceFrame
+            <LaptopFrame
+              framedImageSrc="/screenshots/broadcasts-framed.png"
               blobColor="blue"
               blobPosition="left"
-              notch={true}
               className="max-w-[760px] mx-auto"
-            >
-              <ScreenshotFrame
-                title="Vyxel Broadcasts Manager"
-                subtitle="Festive VIP Launch · Delivery Hook Status: Live"
-                variant="broadcast"
-                className="rounded-none border-0"
-              />
-            </DeviceFrame>
+            />
 
             <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 px-2 font-medium">
               <span className="flex items-center gap-1.5 text-[#007FFB]">

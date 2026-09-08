@@ -4,7 +4,7 @@ import {
   ArrowRight, Layers, Eye, ArrowUpRight
 } from 'lucide-react';
 import { ScreenshotFrame } from '../ui/ScreenshotFrame';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 
 export const AdsAttribution: React.FC = () => {
   return (
@@ -91,19 +91,20 @@ export const AdsAttribution: React.FC = () => {
 
           {/* Right Column: Visual Ad Creator Window */}
           <div className="lg:col-span-7">
-            <DeviceFrame
+            <LaptopFrame
               blobColor="yellow"
-              blobPosition="right"
-              notch={true}
+              blobPosition="top-right"
               className="max-w-[760px] mx-auto"
             >
-              <ScreenshotFrame
-                title="Vyxel Ad Creator &amp; Attribution Rollup"
-                subtitle="Meta Ads Manager Sync · Attribution: First-Touch Active"
-                variant="ads"
-                className="rounded-none border-0"
-              />
-            </DeviceFrame>
+              <div className="w-full h-full overflow-hidden">
+                <ScreenshotFrame
+                  title="Vyxel Ad Creator &amp; Attribution Rollup"
+                  subtitle="Meta Ads Manager Sync · Attribution: First-Touch Active"
+                  variant="ads"
+                  className="rounded-none border-0 h-full"
+                />
+              </div>
+            </LaptopFrame>
             <div className="mt-4 flex items-center justify-between text-xs text-slate-500 px-2 font-medium">
               <span>Meta Graph Marketing API v21.0</span>
               <span className="font-mono text-[11px] text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">

@@ -5,7 +5,7 @@ import {
   ShieldCheck, Share2
 } from 'lucide-react';
 import { integrationsList } from '../../data/integrations';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 
 export const IntegrationsSection: React.FC = () => {
   return (
@@ -35,12 +35,10 @@ export const IntegrationsSection: React.FC = () => {
 
         {/* Real Meta Embedded Signup & WhatsApp Setup Showcase */}
         <div className="mb-14">
-          <DeviceFrame
-            imageSrc="/screenshots/whatsapp-setup.png"
-            imageAlt="Vyxel Official Meta Embedded Signup & WhatsApp WABA Setup"
+          <LaptopFrame
+            framedImageSrc="/screenshots/whatsapp-setup-framed.png"
             blobColor="blue"
             blobPosition="center"
-            notch={true}
             className="max-w-[880px] mx-auto"
           />
         </div>

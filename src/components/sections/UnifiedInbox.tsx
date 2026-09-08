@@ -4,7 +4,7 @@ import {
   UserCheck, ArrowRight, CheckCircle2,
   ShieldCheck, ArrowUpRight
 } from 'lucide-react';
-import { DeviceFrame } from '../ui/DeviceFrame';
+import { LaptopFrame } from '../ui/LaptopFrame';
 import { cn } from '../../lib/utils';
 
 export const UnifiedInbox: React.FC = () => {
@@ -112,9 +112,8 @@ export const UnifiedInbox: React.FC = () => {
 
           {/* Right Column: Elevated Live Product Window */}
           <div className="lg:col-span-7">
-            <DeviceFrame
-              imageSrc="/screenshots/inbox.png"
-              imageAlt="Vyxel Connect Unified Team Inbox with Multi-Channel Conversations"
+            <LaptopFrame
+              framedImageSrc="/screenshots/inbox-framed.png"
               blobColor="cyan"
               blobPosition="top-right"
               className="max-w-[760px] mx-auto"
